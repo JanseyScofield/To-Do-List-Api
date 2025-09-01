@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=TO_DO_LIST
+      - PSQL_HISTORY=/tmp/.psql_history 
+    volumes:
+      - polls_pg_data:/bitnami/postgresql
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  polls_pg_data:
