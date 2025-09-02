@@ -1,5 +1,4 @@
-﻿using System.Xml.Linq;
-using Domain.Interfaces;
+﻿using Domain.Interfaces;
 
 namespace Domain.Entities
 {

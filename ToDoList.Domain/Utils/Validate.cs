@@ -5,6 +5,7 @@ namespace Domain.Utils
     public class Validate
     {
         private static Regex _emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        private static Regex _passwordRegex = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$");
 
         public static void ValidateIntId(int id)
         {
@@ -52,6 +53,10 @@ namespace Domain.Utils
             if (string.IsNullOrEmpty(password))
             {
                 throw new ArgumentException("Password cannot be null or empty.");
+            }
+            if (_passwordRegex.IsMatch(password))
+            {
+                throw new ArgumentException("Password must be at least 8 characters long, contain at least one letter, one number, and one special character.");
             }
         }
     }
