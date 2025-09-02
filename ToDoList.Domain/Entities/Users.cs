@@ -28,6 +28,14 @@ namespace Domain.Entities
             Password = password;
         }
 
+        public void Update(string name, string email, string password)
+        {
+            Validate(name, email, password);
+            Name = name;
+            Email = email;
+            Password = password;
+        }
+
         private void Validate(string name, string email, string password)
         {
             Utils.Validate.ValidateName(name);
