@@ -1,7 +1,19 @@
-﻿namespace Domain.Utils
+﻿using System.Text.RegularExpressions;
+
+namespace Domain.Utils
 {
     public class Validate
     {
+        private static Regex _emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+        public static void ValidateIntId(int id)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException("Id must be greater than zero.");
+            }
+        }
+
         public static void ValidateName(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -20,6 +32,26 @@
             if (string.IsNullOrEmpty(description))
             {
                 throw new ArgumentException("Description cannot be null or empty.");
+            }
+        }
+
+        public static void ValidateEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentException("Email cannot be null or empty.");
+            }
+
+            if (!_emailRegex.IsMatch(email))
+            {
+                throw new ArgumentException("Email format is invalid.");
+            }
+        }
+
+        public static void ValidatePassword(string password) {
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("Password cannot be null or empty.");
             }
         }
     }

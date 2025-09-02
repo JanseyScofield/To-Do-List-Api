@@ -11,10 +11,7 @@ namespace Domain.Entities
             get => _id;
             set
             {
-                if (value <= 0)
-                {
-                    throw new ArgumentException("Id must be greater than zero.");
-                }
+                Utils.Validate.ValidateIntId(value);
                 _id = value; 
             }
         }
