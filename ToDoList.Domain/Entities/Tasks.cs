@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Task : IIdentifyEntity<int>
+    public class Tasks : IIdentifyEntity<int>
     {
         private int _id;
         public int Id
@@ -23,7 +23,7 @@ namespace Domain.Entities
         public Status Status { get; private set; }
         public Users User { get; private set; }
 
-        public Task(string name, string description, Status status, Users user)
+        public Tasks(string name, string description, Status status, Users user)
         {
             Validate(name, description);
             Name = name;
