@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ToDoList.Infrastructure;
+
 namespace ToDoListApi
 {
     public class Program
@@ -9,7 +12,8 @@ namespace ToDoListApi
             // Add services to the container.
 
             builder.Services.AddControllers();
-
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                        options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
