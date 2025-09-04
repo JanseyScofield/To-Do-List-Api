@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace ToDoList.Infrastructure.Modals
 {
-    public class UsersModal : IModal<Users, int>
+    public class UsersModel : IModel<Users, int>
     {
         public int Id { get; set; } = 0;
         public string Name { get; set; } = "";

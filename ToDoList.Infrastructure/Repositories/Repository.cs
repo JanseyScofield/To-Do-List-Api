@@ -2,7 +2,7 @@
 
 namespace ToDoList.Infrastructure.Repositories
 {
-    public class Repository<T, TEntity, TKey> : IRepository<T, TEntity, TKey> where TEntity : IIdentifyEntity<TKey> where T : IModal<TEntity, TKey>, new()
+    public class Repository<T, TEntity, TKey> : IRepository<T, TEntity, TKey> where TEntity : IIdentifyEntity<TKey> where T : IModel<TEntity, TKey>, new()
     {
         private AppDbContext _context;
         public Repository(AppDbContext context)
@@ -14,9 +14,9 @@ namespace ToDoList.Infrastructure.Repositories
         {
             try
             {
-                var modal = new T();
-                modal.ConvertDomainToModel(entity);
-                await _context.Set<T>().AddAsync(modal);
+                var model = new T();
+                model.ConvertDomainToModel(entity);
+                await _context.model.AddAsync(model);
             }
             catch(Exception ex)
             {

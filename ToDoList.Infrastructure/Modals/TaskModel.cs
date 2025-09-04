@@ -3,7 +3,7 @@ using Domain.Entities;
 
 namespace ToDoList.Infrastructure.Modals
 {
-    public class TaskModal : IModal<Tasks, int>
+    public class TaskModal : IModel<Tasks, int>
     {
         public int Id { get; set; } = 0;
         public string Name { get; set; } = "";
@@ -12,7 +12,7 @@ namespace ToDoList.Infrastructure.Modals
         public DateTime? FinishAt { get; set; } = new();
         public byte StatusId { get; set; } = new();
         public int UserId { get; set; } = new();
-        public UsersModal User { get; set; } = new();
+        public UsersModel User { get; set; } = new();
 
         public void ConvertDomainToModel(Tasks entity)
         {

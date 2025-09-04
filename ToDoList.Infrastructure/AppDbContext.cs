@@ -7,7 +7,7 @@ namespace ToDoList.Infrastructure
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<TaskModal> Tasks { get; set; }
-        public DbSet<UsersModal> Users { get; set; }
+        public DbSet<UsersModel> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace ToDoList.Infrastructure
                   .OnDelete(DeleteBehavior.Cascade);
             });
 
-            modelBuilder.Entity<UsersModal>(entity =>
+            modelBuilder.Entity<UsersModel>(entity =>
             {
                 entity.ToTable("Users");
                 entity.HasKey(u => u.Id);
