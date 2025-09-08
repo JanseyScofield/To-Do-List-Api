@@ -1,9 +1,9 @@
 ﻿namespace Domain.Interfaces
 {
-    public interface IRepository<T,TEntity, TKey> where TEntity : IIdentifyEntity<TKey>
+    public interface IRepository<TModel,TEntity, TKey> where TEntity : IIdentifyEntity<TKey> where TModel : class, IModel<TEntity, TKey>, new()
     {
-        public Task<IEnumerable<T>> GetAll();
-        public Task<T>? GetById(TKey id);
+        public Task<IEnumerable<TModel>> GetAll();
+        public Task<TModel>? GetById(TKey id);
         public Task Create(TEntity entity);
         public Task Update(TEntity entity);
         public Task DeleteById(TKey id);
